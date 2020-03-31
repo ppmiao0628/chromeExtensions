@@ -2,14 +2,20 @@
  * Created by kellerme on 2020/3/1
  */
 'use strict';
-let setEditAble = document.getElementById('setEditAble');
-setEditAble.onclick = function (ev) {
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        chrome.tabs.executeScript(
-            tabs[0].id,
-            {code: 'document.body.contentEditable = true'});
-    });
-};
+window.onload=function(){
+    let setEditAble = document.getElementById('setEditAble');
+    setEditAble.addEventListener('click',()=>{
+        chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+            chrome.tabs.executeScript(
+                tabs[0].id,
+                {code: 'document.body.contentEditable = true'});
+        });
+    })
+}
+
+// setEditAble.onclick = function (ev) {
+//
+// };
 
 // let changeColor = document.getElementById('changeColor');
 // console.log(changeColor);
